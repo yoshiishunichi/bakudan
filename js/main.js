@@ -23,8 +23,8 @@
         cancel2.style.display = "none";
         cancel3.style.display = "none";
         dog.style.display = "none";
-        result.display = "block";
-        tweetbutton.href = "http://twitter.com/share?url=https://yoshiishunichi.github.io/mimikaki/&text=爆弾解除失敗…"
+        result.style.display = "block";
+        tweetbutton.href = "http://twitter.com/share?url=https://yoshiishunichi.github.io/bakudan/&text=爆弾解除失敗…"
     }
 
     let mLeft = 30;
