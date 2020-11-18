@@ -76,7 +76,7 @@
                 if (tappedDog) {
                     return;
                 }
-                midashi.textContent = "気安く触ってんじゃねえよ";
+                midashi.textContent = "気安く触んじゃねえよ。殺すぞ。";
                 this.hoverFlag = false;
                 bomb();
             },
