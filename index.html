@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>爆弾解除ゲーム</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="midashi">爆弾解除してくれ</h1>
+            <div id="bomb">
+                <img id="bombImg" v-on:click="tapBomb" v-on:mouseover="mouseOverAction" v-on:mouseleave="mouseLeaveAction" src="img/bomb.jpg" alt="bomb">
+                <img id="bombImg2" src="img/bakuhatsu.jpg" alt="bakuhatsu">
+                <img src="img/tapme.jpg" v-if="hoverFlag" id="fukidashi">
+                <p id="gameover">GAME OVER…</p>
+                </div>
+            </div>
+            <div id="items">
+                <div class="cancel" id="cancel1" @click="tapCancel">爆弾解除1</div>
+                <div class="cancel" id="cancel2" @click="tapCancel">爆弾解除2</div>
+                <div class="cancel" id="cancel3" @click="tapCancel">爆弾解除3</div>
+            
+                <div id="dogArea">
+                    <img id="dog" src="img/dog.jpg" @click="tapDog" alt="dog">
+                </div>
+            </div>
+            <div id="tweet">
+            
+                <p id="result">↓結果をツイートする</p>
+                <a href="http://twitter.com/share?url=https://yoshiishunichi.github.io/mimikaki/&text=爆弾解除ゲーム" id="tweetbutton"
+                    target="_blank">ツイートする</a>
+            </div>
+        </div>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>

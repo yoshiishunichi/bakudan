@@ -1,0 +1,86 @@
+body{
+    font-family: 'Courier New', Courier, monospace, sans-serif;
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+}
+h1{
+    text-align: center;
+    font-size: 25px;
+}
+#bomb{
+    width: 80%;
+    margin: 0 auto;
+}
+#bombImg{
+    width: 50%;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    user-select: none;
+}
+#bombImg2{
+    display: none;
+    width: 50%;
+    margin: 0 auto;
+    user-select: none;
+
+}
+#bomb #fukidashi{
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    width: 100px;
+}
+#bomb p{
+    width: 100%;
+    text-align: center;
+    color: red;
+    font-size: 45px;
+    display: none;
+}
+#items{
+    margin-top: 30px;
+}
+.cancel{
+    font-size: 13px;
+    background-color: lightgray;
+    border-color: black;
+    border-radius: 5px;
+    width: 80px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-left: 10px;
+    box-shadow: 0px 10px 10px -5px black;
+    user-select: none;
+    float: left;
+}
+.cancel:hover{
+    box-shadow: 0px 8px 8px -5px black;
+}
+.cancel:active{
+    box-shadow: none;
+}
+
+#dogArea{
+    margin-left: 50px;
+    float: left;
+}
+#dog{
+    width: 100px;
+    cursor: pointer;
+    clear: left;
+}
+#tweet{
+    margin-left: 20px;
+    margin-top: 200px;
+    clear: left;
+}
+#tweet #result{
+    display: none;
+}
