@@ -24,8 +24,9 @@
         cancel3.style.display = "none";
         dog.style.display = "none";
         result.style.display = "block";
-        tweetbutton.href = "http://twitter.com/share?url=https://yoshiishunichi.github.io/bakudan/&text=爆弾解除失敗…"
+        tweetbutton.href = "http://twitter.com/share?url=https://yoshiishunichi.github.io/bakudan/&text=爆弾解除失敗…";
     }
+    
 
     let mLeft = 30;
     let tappedDog = false;
@@ -39,6 +40,8 @@
         const cancel2 = document.getElementById("cancel2");
         const cancel3 = document.getElementById("cancel3");
         const dog = document.getElementById("dog");
+        const result = document.getElementById("result");
+        const tweetbutton = document.getElementById("tweetbutton");
 
         mLeft -= 5;
         dog.style.marginLeft = mLeft + "px";
@@ -53,6 +56,9 @@
         }
         if (mLeft == -400) {
             midashi.textContent = "解除成功！";
+            result.style.display = "block";
+
+            tweetbutton.href = "http://twitter.com/share?url=https://yoshiishunichi.github.io/bakudan/&text=爆弾解除成功！";
         }
     }
     let movingId;
@@ -110,7 +116,7 @@
                 changeDog();
                 setTimeout(moving, 1000);
                 tappedDog = true;
-            },
+            }
         },
     });
 
