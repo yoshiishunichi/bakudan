@@ -29,9 +29,33 @@
         tweetbutton.href = "http://twitter.com/share?url=https://yoshiishunichi.github.io/bakudan/&text=爆弾解除失敗…";
     }
     
-
     let mLeft = 10;
     let bikeM = 10;
+
+    let mooving = false;
+    let safe = false;
+
+    if (window.innerWidth >= 1000){
+        bikeM = 500;
+        safe = true;
+    }
+    window.addEventListener("resize", function(){
+        if (mooving){
+            return;
+        }
+        if (window.innerWidth >= 1000){
+            bikeM = 500;
+            console.log("1000以上");
+            safe = true;
+        }
+        else{
+            bikeM = 10;
+            console.log("1000未満");
+            safe = false;
+
+        }
+    }, false);
+
     let tappedDog = false;
     let tappedBike = false;
 
@@ -41,43 +65,84 @@
     }
     function dieDog() {
 
-        const gameover = document.getElementById("gameover");
         const dog = document.getElementById("dog");
         const result = document.getElementById("result");
+        const gameover = document.getElementById("gameover");
+        const midashi = document.getElementById("midashi");
         const tweetbutton = document.getElementById("tweetbutton");
 
+        if (tappedBike){
+            result.style.display = "block";
+            gameover.style.display = "block";
+            midashi.textContent = "残念…";
+            tweetbutton.href = "http://twitter.com/share?url=https://yoshiishunichi.github.io/bakudan/&text=爆弾解除失敗…"
+        }
+
         dog.src = "img/ohaka.jpg";
-        gameover.style.display = "block";
-        midashi.textContent = "残念…";
-        result.style.display = "block";
-        tweetbutton.href = "http://twitter.com/share?url=https://yoshiishunichi.github.io/bakudan/&text=爆弾解除失敗…";
     }
     function moveDog() {
         
         const cancel3 = document.getElementById("cancel3");
+        const cancel2 = document.getElementById("cancel2");
+        const cancel1 = document.getElementById("cancel1");
         const dog = document.getElementById("dog");
         const bike = document.getElementById("bike");
+        const result = document.getElementById("result");
+        const gameover = document.getElementById("gameover");
+        const midashi = document.getElementById("midashi");
+        const tweetbutton = document.getElementById("tweetbutton");
 
         mLeft -= 5;
-        bikeM += 5;
+        if (mLeft > -95){
+            bikeM += 5;
+        }
         dog.style.marginLeft = mLeft + "px";
         bike.style.marginLeft = bikeM + "px";
 
-        if (mLeft === -40) {
+        console.log(dog.style.marginLeft);
+
+        if (mLeft === -30) {
             cancel3.style.boxShadow = "none";
         }
         if (mLeft === -60) {
-            sound_of_bike();
+            if (safe === false){
+                sound_of_bike();
+            }
         }
         if (mLeft === -65) {
-            running();
+            if (safe === false){
+                running();
+            }
         }
         if (mLeft === -70) {
+            if (safe === false){
+                clearInterval(movingId);
+                dieDog();
+                result.style.display = "block";
+                gameover.style.display = "block";
+                midashi.textContent = "残念…";
+                tweetbutton.href = "http://twitter.com/share?url=https://yoshiishunichi.github.io/bakudan/&text=爆弾解除失敗…";
+            }
+        }
+        if (mLeft === -130){
+            cancel2.style.boxShadow = "none";
+        }
+        if (mLeft === -230){
+            cancel1.style.boxShadow = "none";
+            if (safe){
+                result.style.display = "block";
+                midashi.textContent = "解除成功！";
+                tweetbutton.href = "http://twitter.com/share?url=https://yoshiishunichi.github.io/bakudan/&text=爆弾解除成功！";
+                sound_of_bike();
+            }
+        }
+        if (mLeft === -235){
+            running();
+        }
+        if (mLeft === -240){
             clearInterval(movingId);
             dieDog();
-
         }
-        
     }
     function runBike() {
         bikeM -= 10;
@@ -143,6 +208,7 @@
                 if ((tappedDog) || (tappedBike)){
                     return;
                 }
+                mooving = true;
                 changeDog();
                 setTimeout(moving, 1000);
                 tappedDog = true;
@@ -151,13 +217,12 @@
                 if ((tappedDog) || (tappedBike)) {
                     return;
                 }
+                mooving = true;
                 sound_of_bike();
                 setTimeout(running, 300);
                 setTimeout(dieDog, 800);
-                tappedDog = true;
+                tappedBike = true;
             }
         },
     });
-
-
 }
